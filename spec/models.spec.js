@@ -1,8 +1,13 @@
 describe('Todo model', () => {
-  it('should have titles when instantiated', () => {
-    const todo = new Todo({
-      title: 'Eat breakfast.'
+  let todoModel;
+
+  beforeEach(() => {
+    todoModel = new Todo({
+      title: 'foo'
     });
-    expect(todo.get('title')).toEqual('Eat breakfast.');
+  });
+
+  it('should have titles when instantiated', () => {
+    expect(todoModel.get('title')).toEqual('foo');
   });
 });

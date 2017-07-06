@@ -13,6 +13,20 @@
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
+  <script src="node_modules/jasmine-jquery/lib/jasmine-jquery.js"></script>
+
+  <script>
+  (function() {
+    //this loads fixtures from a fixtures folder
+    //relative to where SpecRunner.html lives
+    jasmine.getFixtures()
+      .fixturesPath = './spec/';
+
+    let jasmineEnv = jasmine.getEnv();
+
+    jasmineEnv.updateInterval = 1000;
+  })()
+  </script>
 
   <!-- include source files here... -->
   <script src="./src/models.js"></script>

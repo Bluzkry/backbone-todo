@@ -41,7 +41,6 @@ describe('Todo view', () => {
       enter.which = 13;
       enter.keyCode = 13;
       $('#todo-input').trigger(enter);
-      debugger;
 
       expect($('li')).toExist();
       expect(applicationView.el).toHaveText('Foo');

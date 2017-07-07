@@ -25,7 +25,7 @@ ApplicationView = Backbone.View.extend({
     if (event.keyCode != 13) {
       return;
     } else {
-      todosCollection.add({ title: $('#todo-input').val() });
+      self.collection.add({ title: $('#todo-input').val() });
       $('#todo-input').val('');
     }
   },

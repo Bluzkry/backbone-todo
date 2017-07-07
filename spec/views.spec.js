@@ -37,11 +37,13 @@ describe('Todo view', () => {
 
     it('should add a list item to the DOM when the user hits `enter` on the input', () => {
       $('#todo-input').val('Foo');
-      const enter = jQuery.Event('keydown');
+      const enter = jQuery.Event('keypress');
       enter.which = 13;
+      enter.keyCode = 13;
       $('#todo-input').trigger(enter);
+      debugger;
 
-      expect(applicationView.el).toHaveHtml('<li></li>');
+      expect($('li')).toExist();
       expect(applicationView.el).toHaveText('Foo');
     });
   });

@@ -1,33 +1,49 @@
-describe('TodoView', () => {
-  let todoView, todoModel;
-
+describe('Todo view', () => {
   beforeEach(() => {
     loadFixtures('fixtures.html');
-    todoModel = new Backbone.Model({
-      title: 'Foo'
+  });
+
+  describe('TodoView', () => {
+    let todoView, todoModel;
+
+    beforeEach(() => {
+      todoModel = new Backbone.Model({
+        title: 'Foo'
+      });
+      todoView = new TodoView({ model: todoModel });
     });
-    todoView = new TodoView({ model: todoModel });
+
+    it('should have an HTML element which is a list element', () => {
+      expect(todoView.el.nodeName).toEqual('LI');
+    });
+
+    it('should produce HTML that reflects the model', () => {
+      $('ul.todo-list-test').append(todoView.render().el);
+      expect($(todoView.el).find('p')).toHaveText('Foo');
+    });
   });
 
-  it('should have an HTML element which is a list element', () => {
-    expect(todoView.el.nodeName).toEqual('LI');
-  });
+  describe('ApplicationView', () => {
+    let applicationView, todosCollection;
 
-  it('should produce HTML that reflects the model', () => {
-    $('ul.todo-list-test').append(todoView.render().el);
-    expect($(todoView.el).find('p')).toHaveText('Foo');
+    beforeEach(() => {
+      todosCollection = new Todos();
+      applicationView = new ApplicationView({ collection: todosCollection });
+    });
+
+    it('should render to the element with the id `todo-list', () => {
+      expect(applicationView.el).toHaveId('todo-app');
+    });
+
+    it('should add a list item to the DOM when the user hits `enter` on the input', () => {
+      $('#todo-input').val('Foo');
+      const enter = jQuery.Event('keydown');
+      enter.which = 13;
+      $('#todo-input').trigger(enter);
+
+      expect(applicationView.el).toHaveHtml('<li></li>');
+      expect(applicationView.el).toHaveText('Foo');
+    });
   });
 });
 
-describe('TodosView', () => {
-  let todosView;
-
-  beforeEach(() => {
-    todosView = new TodosView();
-  });
-
-  it('should have an HTML element which is a list container element', () => {
-    expect(todosView.el.nodeName).toEqual('UL');
-  });
-
-});

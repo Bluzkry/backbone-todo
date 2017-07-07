@@ -7,14 +7,16 @@
 </head>
 <body>
 
+<div id="todo-app">
 <header>
   <h1>Todo List</h1>
-  <input id="todo" type="text" placeholder="Please enter your todo item.">
+  <input id="todo-input" type="text" placeholder="Please enter your todo item.">
 </header>
 
 <section id="section-list">
   <ul id="todo-list"></ul>
 </section>
+</div>
 
 <script type="text/template" id="todo-template">
 <p><%- title %></p>
@@ -26,5 +28,6 @@
 <script src="./src/models.js"></script>
 <script src="./src/collections.js"></script>
 <script src="./src/views.js"></script>
+<script src="./src/app.js"></script>
 </body>
 </html>

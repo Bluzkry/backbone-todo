@@ -1,8 +1,10 @@
 <div id="todo-app">
-  <input id="todo-input" type="text" title="test todo item">
+    <h1>Todo List</h1>
+    <input id="todo-input" type="text" placeholder="Please enter your todo item.">
+
   <ul id="todo-list"></ul>
 </div>
 
 <script type="text/template" id="todo-template">
-  <p><%- title %></p>
+  <p><%- title %> <button class="delete">X</button></p>
 </script>

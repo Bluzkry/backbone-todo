@@ -1,13 +1,28 @@
 TodoView = Backbone.View.extend({
   tagName: 'li',
+  events: {
+    'click button.delete': 'deleteTodo'
+  },
   initialize: function() {
     const self = this;
+    self.listenTo(self.model, 'destroy', self.removeFromView);
     self.template = _.template($('#todo-template').html());
   },
   render: function() {
     const self = this;
     self.$el.html(self.template(self.model.toJSON()));
     return self;
+  },
+  deleteTodo: function() {
+    const self = this;
+    self.model.trigger('destroy', self.model);
+  },
+  removeFromView: function() {
+    const self = this;
+    self.undelegateEvents();
+    self.$el.removeData().unbind();
+    self.remove();
+    Backbone.View.prototype.remove.call(this);
   }
 });
 

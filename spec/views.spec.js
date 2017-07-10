@@ -11,6 +11,7 @@ describe('Todo view', () => {
         title: 'Foo'
       });
       todoView = new TodoView({ model: todoModel });
+      $('ul#todo-list').append(todoView.render().el);
     });
 
     it('should have an HTML element which is a list element', () => {
@@ -18,8 +19,12 @@ describe('Todo view', () => {
     });
 
     it('should produce HTML that reflects the model', () => {
-      $('ul.todo-list-test').append(todoView.render().el);
-      expect($(todoView.el).find('p')).toHaveText('Foo');
+      expect(todoView.$el.find('p')).toContainText('Foo');
+    });
+
+    it('should be deleted from the DOM when the user clicks the delete button', () => {
+      $('button.delete').trigger('click');
+      expect(todoView.$el).not.toBeInDOM();
     });
   });
 
@@ -43,7 +48,7 @@ describe('Todo view', () => {
       $('#todo-input').trigger(enter);
 
       expect($('li')).toExist();
-      expect(applicationView.el).toHaveText('Foo');
+      expect(applicationView.$el).toContainText('Foo');
     });
   });
 });

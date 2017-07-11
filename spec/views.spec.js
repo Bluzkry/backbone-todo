@@ -30,6 +30,36 @@ describe('Todo view', () => {
       $('button.delete').trigger('click');
       expect(todoView.$el).not.toBeInDOM();
     });
+
+    it('shows and then hides the correct HTML when the user edits the list', () => {
+      $('button.edit').trigger('click');
+      expect(todoView.$el.find('.update-input, .update-btn')).toBeVisible();
+      expect(todoView.$el.find('.title, .delete, .edit')).not.toBeVisible();
+
+      $('button.update-btn').trigger('click');
+      expect(todoView.$el.find('.update-input, .update-btn')).not.toBeVisible();
+      expect(todoView.$el.find('.title, .delete, .edit')).toBeVisible();
+    });
+
+    it('updates the text when user edits the list', () => {
+      $('button.edit').trigger('click');
+      $('.update-input').val('Bar');
+      $('button.update-btn').trigger('click');
+
+      expect(todoView.$el.find('p')).toContainText('Bar');
+    });
+
+    it('also updates the text when user edits the list and hits enter on the input', () => {
+      const enter = jQuery.Event('keypress');
+      enter.which = 13;
+      enter.keyCode = 13;
+
+      $('button.edit').trigger('click');
+      $('.update-input').val('Bar');
+      $('.update-input').trigger(enter);
+
+      expect(todoView.$el.find('p')).toContainText('Bar');
+    });
   });
 
   describe('ApplicationView', () => {
@@ -56,4 +86,3 @@ describe('Todo view', () => {
     });
   });
 });
-

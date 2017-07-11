@@ -6,5 +6,10 @@
 </div>
 
 <script type="text/template" id="todo-template">
-  <p><%- title %> <button class="delete">X</button></p>
+  <p><span class="title"><%- title %></span>
+    <input title="title" class="update-input hide">
+  </p>
+  <button class="delete btn btn-danger">X</button>
+  <button class="edit btn btn-info">Edit</button>
+  <button class="update-btn btn btn-success hide">Update</button>
 </script>

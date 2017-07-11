@@ -3,15 +3,23 @@ body {
   padding-top: 5%;
 }
 
-ul {
-  margin: 5% 0;
+input {
+  width: 100%;
 }
 
 li {
   font-size: 1.5em;
 }
 
+ul {
+  margin: 5% 0;
+}
+
 #todo-app {
   margin: 0 auto;
   width: 20%;
+}
+
+.hide {
+  display: none;
 }

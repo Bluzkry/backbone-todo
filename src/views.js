@@ -1,4 +1,3 @@
-
 TodoView = Backbone.View.extend({
   tagName: 'li',
   className: 'list-group-item',

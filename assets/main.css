@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+  padding-top: 5%;
+}
+
+ul {
+  margin: 5% 0;
+}
+
+li {
+  font-size: 1.5em;
+}
+
+#todo-app {
+  margin: 0 auto;
+  width: 20%;
+}

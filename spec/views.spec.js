@@ -18,6 +18,10 @@ describe('Todo view', () => {
       expect(todoView.el.nodeName).toEqual('LI');
     });
 
+    it('should render to the element with the Bootstrap class group-list-item', () => {
+      expect(todoView.el).toHaveClass('list-group-item');
+    });
+
     it('should produce HTML that reflects the model', () => {
       expect(todoView.$el.find('p')).toContainText('Foo');
     });

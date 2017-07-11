@@ -1,5 +1,6 @@
 TodoView = Backbone.View.extend({
   tagName: 'li',
+  className: 'list-group-item',
   events: {
     'click button.delete': 'deleteTodo'
   },

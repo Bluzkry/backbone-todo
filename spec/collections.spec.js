@@ -1,10 +1,10 @@
 describe('Todo collection', () => {
   let todoModel, todosCollection;
   beforeEach(() => {
-    todoModel = new Todo({
+    todoModel = new app.Todo({
       title: 'foo'
     });
-    todosCollection = new Todos();
+    todosCollection = new app.Todos();
   });
 
   afterEach(() => {

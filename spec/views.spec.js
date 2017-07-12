@@ -10,7 +10,7 @@ describe('Todo view', () => {
       todoModel = new Backbone.Model({
         title: 'Foo'
       });
-      todoView = new TodoView({ model: todoModel });
+      todoView = new app.TodoView({ model: todoModel });
       $('ul#todo-list').append(todoView.render().el);
     });
 
@@ -66,8 +66,8 @@ describe('Todo view', () => {
     let applicationView, todosCollection;
 
     beforeEach(() => {
-      todosCollection = new Todos();
-      applicationView = new ApplicationView({ collection: todosCollection });
+      todosCollection = new app.Todos();
+      applicationView = new app.ApplicationView({ collection: todosCollection });
     });
 
     it('should render to the element with the id `todo-list', () => {

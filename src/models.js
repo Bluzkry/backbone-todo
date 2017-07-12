@@ -1,4 +1,6 @@
-const Todo = Backbone.Model.extend({
+var app = app || {};
+
+app.Todo = Backbone.Model.extend({
   defaults: {
     title: ''
   }

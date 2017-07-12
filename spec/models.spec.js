@@ -2,7 +2,7 @@ describe('Todo model', () => {
   let todoModel;
 
   beforeEach(() => {
-    todoModel = new Todo({
+    todoModel = new app.Todo({
       title: 'foo'
     });
   });

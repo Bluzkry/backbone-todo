@@ -1,4 +1,6 @@
-TodoView = Backbone.View.extend({
+var app = app || {};
+
+app.TodoView = Backbone.View.extend({
   tagName: 'li',
   className: 'list-group-item',
   events: {
@@ -49,7 +51,7 @@ TodoView = Backbone.View.extend({
   }
 });
 
-ApplicationView = Backbone.View.extend({
+app.ApplicationView = Backbone.View.extend({
   events: {
     'keypress #todo-input': 'createTodoModel'
   },
@@ -69,7 +71,7 @@ ApplicationView = Backbone.View.extend({
   },
   addTodo: function(todo) {
     const self = this;
-    const newView = new TodoView({ model: todo });
+    const newView = new app.TodoView({ model: todo });
     self.$('#todo-list').append(newView.render().el);
   }
 });

@@ -1,2 +1,2 @@
-const todosCollection = new Todos();
-const appView = new ApplicationView( {collection: todosCollection} );
+const todosCollection = new app.Todos();
+const appView = new app.ApplicationView( {collection: todosCollection} );
